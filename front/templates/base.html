@@ -38,10 +38,13 @@
                 <li><a href="{% url 'front:index' %}">首页</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'auth_logout' %}?next=/front/">退出</a></li>
-                    <li><a href="{% url 'front:add_category' %}">添加分类</a></li>
+
                 {% else %}
                     <li><a href="{% url 'registration_register' %}">注册</a></li>
                     <li><a href="{% url 'auth_login' %}">登陆</a></li>
+                {% endif %}
+                {% if user.is_staff %}
+                    <li><a href="{% url 'front:administrator' %}">后台管理</a></li>
                 {% endif %}
                 <li><a href="{% url 'front:about' %}">关于</a></li>
 

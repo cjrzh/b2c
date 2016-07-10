@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}后台管理{% endblock %}
+
+{% block body_block %}
+    <div class="page-header">
+                <h1>后台管理</h1>
+    <br><a href="{% url 'front:add_category' %}">分类管理</a>
+
+   <br> <a href="{% url 'front:category' 1 %}">商品管理</a>
+    <br> <a href="{% url 'front:category' 1 %}">用户管理</a>
+    <br> <a href="{% url 'front:category' 1 %}">订单管理</a>
+            </div>
+            <div>
+            <p></strong>.</p>
+
+</div>
+{% endblock %}

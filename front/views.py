@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from front.forms import CategoryForm, WareForm
 from front.models import Category,Ware
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 def index(request):
     template_name = 'front/index.html'
@@ -14,6 +16,7 @@ def index(request):
 
     return response
 
+@staff_member_required
 def add_category(request):
     # A HTTP POST?
     if request.method == 'POST':
@@ -51,6 +54,7 @@ def category(request,category_id):
         print("分类不存在")
     return render(request,'front/category.html',context)
 
+@staff_member_required
 def add_ware(request,category_id):
     try:
         cat = Category.objects.get(id=category_id)
@@ -77,4 +81,8 @@ def add_ware(request,category_id):
     return render(request, 'front/add_ware.html', context_dict)
 
 def about(request):
-    pass
+    return render(request,'front/about.html')
+
+@staff_member_required
+def administrator(request):
+    return render(request,'front/administrator.html')

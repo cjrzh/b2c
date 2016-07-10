@@ -22,9 +22,34 @@ class Ware(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
-
+    addr = models.CharField(max_length=256)
+    balance = models.FloatField(default=0)
     website = models.URLField(blank=True)
 
 
     def __str__(self):
         return self.user.username
+
+class Order(models.Model):
+    user=models.ForeignKey(User)
+    date=models.DateField()
+    def __str__(self):
+        return self.id
+
+class OrderItems(models.Model):
+    order=models.ForeignKey(Order)
+    ware=models.ForeignKey(Ware)
+    def __str__(self):
+        return self.id
+
+class ShopCart(models.Model):
+    user=models.ForeignKey(User)
+    #date=models.DateField()
+    def __str__(self):
+        return self.id
+
+class ShopCartItems(models.Model):
+    shopCart=models.ForeignKey(ShopCart)
+    ware=models.ForeignKey(Ware)
+    def __str__(self):
+        return self.id
