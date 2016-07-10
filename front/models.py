@@ -22,7 +22,7 @@ class Ware(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
-    addr = models.CharField(max_length=256)
+    addr = models.CharField(max_length=256,blank=True)
     balance = models.FloatField(default=0)
     website = models.URLField(blank=True)
 
