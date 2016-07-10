@@ -12,9 +12,11 @@ class CategoryForm(forms.ModelForm):
 
 
 class WareForm(forms.ModelForm):
-    name = forms.CharField(max_length=256, help_text="请输入商品名称")
-    price = forms.FloatField(help_text="请输入商品价格")
-    picture = forms.ImageField(help_text="请上传商品图片",required=True)
+    name = forms.CharField(max_length=256, help_text="请输入专辑名称")
+    price = forms.FloatField(help_text="请输入专辑价格")
+    author = forms.CharField(max_length=128,help_text="请输入专辑作者")
+    company = forms.CharField(max_length=128,help_text="请输入发行公司")
+    picture = forms.ImageField(help_text="请上传专辑图片",required=True)
 
     class Meta:
         model = Ware

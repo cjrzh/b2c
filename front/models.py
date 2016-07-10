@@ -16,9 +16,10 @@ class Ware(models.Model):
     name = models.CharField(max_length=128)
     price = models.FloatField(max_length=128)
     picture = models.ImageField(upload_to='profile_images',blank=True)
-
-    def __str__(self):  # For Python 2, use __str__ on Python 3
-        return self.title
+    author = models.CharField(max_length=128)
+    company = models.CharField(max_length=128)
+    def __str__(self):
+        return self.name
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
@@ -43,13 +44,13 @@ class OrderItems(models.Model):
         return self.id
 
 class ShopCart(models.Model):
-    user=models.ForeignKey(User)
+    user=models.OneToOneField(User)
     #date=models.DateField()
     def __str__(self):
         return self.id
 
 class ShopCartItems(models.Model):
     shopCart=models.ForeignKey(ShopCart)
-    ware=models.ForeignKey(Ware)
+    ware=models.OneToOneField(Ware)
     def __str__(self):
         return self.id

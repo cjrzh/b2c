@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from front.forms import CategoryForm, WareForm
-from front.models import Category,Ware
+from front.models import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
@@ -97,3 +97,30 @@ def ware(request,ware_id):
     except Ware.DoesNotExist:
         print("商品不存在")
     return render(request,'front/ware.html',context)
+
+@login_required
+def show_cart(request):
+    user=request.user
+    shopcart = ShopCart.objects.get_or_create(user=user)[0]
+    items=ShopCartItems.objects.filter(shopCart=shopcart)
+    context={}
+    context['items']=items
+    return render(request,'front/show_cart.html',context)
+
+@login_required
+def add_to_cart(request,ware_id):
+    user=request.user
+    shopcart = ShopCart.objects.get_or_create(user=user)[0]
+    #items=ShopCartItems.objects.filter(shopCart=shopcart)
+    ware=Ware.objects.get(id=ware_id)
+    ShopCartItems.objects.get_or_create(shopCart=shopcart,ware=ware)
+    return HttpResponseRedirect('/front/show_cart')
+
+@login_required
+def delete_from_cart(request,ware_id):
+    user=request.user
+    shopcart = ShopCart.objects.get_or_create(user=user)[0]
+    ware=Ware.objects.get(id=ware_id)
+    shopcartItem=ShopCartItems.objects.filter(ware=ware).first().delete()
+
+    return HttpResponseRedirect('/front/show_cart')
