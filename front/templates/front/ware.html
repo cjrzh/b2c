@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>物品</title>
-</head>
-<body>
-{{ ware.name }}
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}物品{% endblock %}
+
+{% block body_block %}
+    <div class="page-header">
+        <h1> {{ ware.author }}:{{ ware.name }}</h1>
+        <font color="red"> ￥{{ ware.price }}</font>
+        <br>
+    <a href="{% url 'front:add_to_cart' ware.id %}">加入购物车</a>
+
+    </div>
+    <div>
+
+    </div>
+{% endblock %}
