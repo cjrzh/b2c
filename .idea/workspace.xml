@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a0d7cc5-4ae5-4f6c-9628-3bf4a58b87e9" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/front/static/front/images/front.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/front/static/front/images/twd.ico" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/b2c/settings.py" afterPath="$PROJECT_DIR$/b2c/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/models.py" afterPath="$PROJECT_DIR$/front/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/templates/base.html" afterPath="$PROJECT_DIR$/front/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/templates/front/about.html" afterPath="$PROJECT_DIR$/front/templates/front/about.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/templates/front/category.html" afterPath="$PROJECT_DIR$/front/templates/front/category.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/urls.py" afterPath="$PROJECT_DIR$/front/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/views.py" afterPath="$PROJECT_DIR$/front/views.py" />
     </list>
     <ignored path="b2c.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -97,17 +88,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="administrator.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="administrator.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front/templates/front/administrator.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.62795275">
-              <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
+            <state vertical-scroll-proportion="-6.105263">
+              <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="auth_user" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/b2c/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="133" column="30" selection-start-line="133" selection-start-column="30" selection-end-line="133" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="auth_user" pinned="false" current-in-tab="true">
         <entry file="dbDummy://dbtable:/4cdcf1a2/0d42c5f1-7961-43e3-879e-f48c1d017807/auth_user">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state>
@@ -156,7 +157,6 @@
         <option value="$PROJECT_DIR$/front/templates/front/add_ware.html" />
         <option value="$PROJECT_DIR$/front/forms.py" />
         <option value="$PROJECT_DIR$/front/templates/front/about.html" />
-        <option value="$PROJECT_DIR$/b2c/settings.py" />
         <option value="$PROJECT_DIR$/front/models.py" />
         <option value="$PROJECT_DIR$/front/urls.py" />
         <option value="$PROJECT_DIR$/front/templates/base.html" />
@@ -164,6 +164,7 @@
         <option value="$PROJECT_DIR$/b2c/urls.py" />
         <option value="$PROJECT_DIR$/front/templates/front/category.html" />
         <option value="$PROJECT_DIR$/front/templates/front/administrator.html" />
+        <option value="$PROJECT_DIR$/b2c/settings.py" />
       </list>
     </option>
   </component>
@@ -638,7 +639,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1" width="1920" height="1033" extended-state="7" />
+    <frame x="0" y="-1" width="1920" height="1033" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26213592" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1004,18 +1005,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/b2c/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="102" column="1" selection-start-line="102" selection-start-column="1" selection-end-line="102" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/b2c/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6813187">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/templates/front/category.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.3421054">
+          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/b2c/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="133" column="30" selection-start-line="133" selection-start-column="30" selection-end-line="133" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/templates/front/administrator.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.105263">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -1029,22 +1046,6 @@
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/templates/front/category.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.3421054">
-          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/templates/front/administrator.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62795275">
-          <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
           <folding />
         </state>
       </provider>
