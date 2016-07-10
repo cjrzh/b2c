@@ -10,5 +10,6 @@ urlpatterns = [
         views.add_ware,name='add_ware'),
     url(r'^add_category/$', views.add_category, name='add_category'),
     url(r'^category/(?P<category_id>[0-9]+)/$', views.category, name='category'),
+    url(r'^ware/(?P<ware_id>[0-9]+)/$', views.ware, name='ware'),
     url(r'^administrator/$', views.administrator, name='administrator'),
 ]

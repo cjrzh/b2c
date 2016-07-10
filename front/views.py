@@ -86,3 +86,14 @@ def about(request):
 @staff_member_required
 def administrator(request):
     return render(request,'front/administrator.html')
+
+def ware(request,ware_id):
+    context={}
+    try:
+        ware=Ware.objects.get(id=ware_id)
+        context['ware_name']=ware.name
+        context['ware']=ware
+
+    except Ware.DoesNotExist:
+        print("商品不存在")
+    return render(request,'front/ware.html',context)

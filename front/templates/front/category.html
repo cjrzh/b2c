@@ -27,7 +27,7 @@
               <p><small>
                 <font color="red"> ￥{{ ware.price }}</font>
                   </br>
-                {{ ware.name }}
+                <a href="{% url 'front:ware' ware.id %}"> {{ ware.name }}</a>
 
               </small></p>
             </div>
