@@ -22,3 +22,10 @@ class WareForm(forms.ModelForm):
         model = Ware
         exclude = ('category',)
 
+class UserProfileForm(forms.ModelForm):
+    realname=forms.CharField(max_length=256, help_text="请输入真实姓名",
+                             required=True)
+    addr=forms.CharField(max_length=256, help_text="请输入收货地址",required=True)
+    class Meta:
+        model=UserProfile
+        exclude=("balance","user",)

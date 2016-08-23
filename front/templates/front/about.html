@@ -5,9 +5,10 @@
 {% block title %}关于{% endblock %}
 
 {% block body_block %}
-    <div class="page-header">
-                <h1>关于</h1>
-            </div>
+   <ul class="breadcrumb">
+    <li><a href="{% url 'front:index' %}"><big>首页</big></a> <span class="divider">/</span></li>
+    <li class="active"><big>关于</big></li>
+    </ul> 
             <div>
             <p></strong>.</p>
         <img src="{% static "front/images/sdu.jpg" %}" alt="图片" />

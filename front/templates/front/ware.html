@@ -1,18 +1,64 @@
 {% extends 'base.html' %}
-
 {% load staticfiles %}
-
-{% block title %}物品{% endblock %}
-
+{% block title %}{{ware.name}}{% endblock %}
 {% block body_block %}
-    <div class="page-header">
-        <h1> {{ ware.author }}:{{ ware.name }}</h1>
-        <font color="red"> ￥{{ ware.price }}</font>
-        <br>
-    <a href="{% url 'front:add_to_cart' ware.id %}">加入购物车</a>
+<ul class="breadcrumb">
+    <li><a href="{% url 'front:index' %}"><big>首页</big></a> <span class="divider">/</span></li>
+    <li  <a href="{% url 'front:ware' ware.category.id %}"><big>{{ ware.category.name }}</big></a> <span class="divider">/</span></li>
+    <li class="active"><big>{{ ware.name }}</big></li>
+    </ul> 
+   <!-- <div id="page" >
+  <div id="top">
+  <div style="margin: 0 auto;">  
+  -->
+   <div class="row">  
+      <div id="gallery" class="span3">
+            <a href="/media/{{ ware.picture }}"  title="{{ ware.name }}">
+        <img src="/media/{{ ware.picture }}" style="width:100%"alt="{{ ware.name }}"/></a>
+      </div>
+      <div class="span6">
+        <h3>  {{ ware.name }}</h3>
+        <big><b>歌手</b>&nbsp;&nbsp;{{ware.author}}&nbsp;&nbsp;<b>发行公司&nbsp;&nbsp;</b>{{ware.company}}</big>
+        <hr class="soft"/>
+         <h2>￥{{ ware.price }}</h2>
+          <form action="{% url 'front:add_to_cart' ware.id %}" method="get">
+          <button type="submit" class="btn btn-large btn-primary pull-left">加入购物车<i class=" icon-shopping-cart"></i></button>
+        </form>
+        <hr class="soft clr"/>
+      </div>
+        
 
-    </div>
-    <div>
+ <!--<div style="width: 400px; height: 400px; float: left"> 
+  <a href="/media/{{ ware.picture }}"  title="{{ ware.name}}">
+          <img src="/media/{{ ware.picture }}" width="300px" height="300px" alt="{{ ware.name}}"/>       
+          </a>   
+  </div>-->
+    <!--<div style= "width: 400px; height: 400px; float: left">
+    	<table border="0" cellspacing="25" cellpadding="30" id="table1">
+        <tr>
+        <td style= "height: 80px ">{{ ware.name }}&nbsp;&nbsp;(现货)
+        </td>
+        <td></td>
+      </tr>
+        <td>
+        <tr>
+                <td>价格：</td>
+                <td><font color="red">￥{{ ware.price }}</font></td>
+            </tr>
+            <tr>
+           <td style= "height: 80px; width:150px ">表演者：</td>
+                <td><span style="color:#990000; font-size:20px;">{{ware.author}}</span><span >&nbsp;&nbsp;{{ware.company}}</span></td>
+            </tr>
+            <tr>
+                <td colspan="2"><hr/></td>
+              </tr>
+              <tr>
+                <td><form action="{% url 'front:add_to_cart' ware.id %}" method="get"><button type="submit" ><span class="glyphicon glyphicon-shopping-cart">加入购物车</button></a>
+                </td>
+              </tr>
 
-    </div>
+   		 </table>
+    </div>-->
 {% endblock %}
+
+

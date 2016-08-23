@@ -1,42 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
+    {% load staticfiles %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="http://getbootstrap.com/favicon.ico">
-
-    <title>音乐商城-{% block title %}{% endblock %}</title>
-
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
-
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-
+<!--Less styles --> 
+   <!-- Other Less css file //different less files has different color scheam
+  <link rel="stylesheet/less" type="text/css" href="themes/less/simplex.less">
+  <link rel="stylesheet/less" type="text/css" href="themes/less/classified.less">
+  <link rel="stylesheet/less" type="text/css" href="themes/less/amelia.less">  MOVE DOWN TO activate
+  -->
+  <!--<link rel="stylesheet/less" type="text/css" href="themes/less/bootshop.less">
+  <script src="themes/js/less.js" type="text/javascript"></script> -->
+  
+<!-- Bootstrap style --> 
+    <link id="callCss" rel="stylesheet" href="{% static 'front/bootstrap.min.css' %}" media="screen"/>
+    
+    <link href="{% static 'front/base.css' %}"  rel="stylesheet" media="screen"/>
+<!-- Bootstrap style responsive --> 
+  <link href="{% static 'front/bootstrap-responsive.min.css' %}" rel="stylesheet"/>
+  <link href="{% static 'front/font-awesome.css' %}" rel="stylesheet" type="text/css">
+<!-- Google-code-prettify --> 
+  <link href=href="{% static 'front/prettify.css' %}" rel="stylesheet"/>
+<!--fav and touch icons -->
+    <link rel="shortcut icon" href="themes/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="themes/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="themes/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="themes/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="themes/images/ico/apple-touch-icon-57-precomposed.png">
+  <style type="text/css" id="enject"></style> 
+  <title>音乐商城-{% block title %}{% endblock %}</title>
+  </head>
 <body>
-
-<!-- 顶部导航栏  -->
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/front/"><span class="glyphicon glyphicon-music">音乐商城</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'front:index' %}"><span class="glyphicon glyphicon-home">首页</a></li>
-                {% if user.is_authenticated %}
+<div id="header">
+<div class="container">
+  <!-- Navbar ================================================== -->
+<div id="logoArea" class="navbar">
+<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+</a>
+  <div class="navbar-inner">
+    <a class="brand" href="/front/"><span class="glyphicon glyphicon-music">音乐商城</a>
+    <form class="form-inline navbar-search" method="post" action="#" >
+    <input id="srchFld" class="srchTxt" type="text" />
+      <button type="submit" id="submitButton" class="btn btn-primary">搜索</button>
+    </form>
+    <ul id="topMenu" class="nav pull-right">
+    <li><a href="{% url 'front:index' %}"><span class="glyphicon glyphicon-home">首页</a></li>
+    {% if user.is_authenticated %}
                     <li><a href="{% url 'auth_logout' %}?next=/front/"><span class="glyphicon glyphicon-remove">退出</a></li>
                     <li><a href="{% url 'front:show_cart' %}"><span class="glyphicon glyphicon-shopping-cart">我的购物车</a> </li>
                 {% else %}
@@ -44,40 +61,97 @@
                     <li><a href="{% url 'auth_login' %}"><span class="glyphicon glyphicon-user">登陆</a></li>
                 {% endif %}
                 <li><a href="{% url 'front:about' %}"><span class="glyphicon glyphicon-info-sign">关于</a></li>
+
                  {% if user.is_staff %}
- +                    <li><a href="{% url 'front:administrator' %}"><span class="glyphicon glyphicon-cog">后台管理</a></li>
- +                {% endif %}
+              <li><a href="{% url 'front:administrator' %}"><span class="glyphicon glyphicon-cog">后台管理</a></li>
+               {% endif %}
             </ul>
-        </div>
-    </div>
+            
+  </div>
 </div>
-
-
-<div class="container-fluid">
-    <div class="row">
-        <!-- 侧边栏  -->
-        <div class="col-sm-3 col-md-2 sidebar">
-            {% block side_block %}
+</div>
+</div>
+<!-- Header End====================================================================== -->
+<div id="mainBody">
+  <div class="container">
+  <div class="row">
+<!-- Sidebar ================================================== -->
+  <div id="sidebar" class="span3">
+    <div class="well well-small"><big>唱片分类</big><span class="badge badge-warning pull-right"><span class="glyphicon glyphicon-music"></span></span></div>
+    <ul id="sideManu" class="nav nav-tabs nav-stacked">
+                {% block side_block %}
                 {% load front_extras %}
                 {% get_category_list %}
-            {% endblock %}
-
+                {% endblock %}
+                </ul>
+    <br/>
+      <div class="thumbnail">
+      <img src="{% static "front/images/wyt.jpg" %} " alt="五月天 最新专辑"/>
+      <div class="caption">
+        <h5>五月天 第二人生</h5>
+        <h4 style="text-align:center"> <a class="btn" href="#">加入购物车<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥42.6</a></h4>
+      </div>
+      </div><br/>
+      <div class="thumbnail">
+        <img src="{% static "front/images/sdy.jpg" %} " title="宋冬野 鸽子" alt="宋冬野 鸽子">
+        <div class="caption">
+          <h5>宋冬野 鸽子</h5>
+            <h4 style="text-align:center"> <a class="btn" href="#">加入购物车<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥28.7</a></h4>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <div>
-                <!-- 中间部分 -->
-                {% block body_block %}{% endblock %}
-            </div>
+        </div><br/>
+      <div class="thumbnail">
+        <img src="{% static "front/images/payment_methods.png" %} " title="Bootshop Payment Methods" alt="Payments Methods">
+        <div class="caption">
+          <h5>Payment Methods</h5>
         </div>
-    </div>
+        </div>
+  </div>
+  <div class="span9">
+  {% block body_block %}{% endblock %} 
+  </div>
 </div>
+</div>
+</div>
+  <!-- Footer ================================================================== -->
+  <div  id="footerSection">
+  <div class="container">
+    <div class="row">
+      <div class="span3">
+        <h5>账户</h5>
+        <a href="{% url 'front:index' %}"><span class="glyphicon glyphicon-home">首页</a>
+        <a href="{% url 'front:show_cart' %}"><span class="glyphicon glyphicon-shopping-cart">我的购物车</a>
+        <a href="{% url 'registration_register' %}"><span class="glyphicon glyphicon-heart-empty">注册</a>
+        <a href="{% url 'auth_login' %}"><span class="glyphicon glyphicon-user">登陆</a> 
+        <a href="{% url 'auth_logout' %}?next=/front/"><span class="glyphicon glyphicon-remove">退出</a>
+       </div>
+      <div class="span3">
+        <h5>商家信息</h5>
+        <p>电话：17865135006</p>  
+        <p>地址：山东大学齐鲁软件学院<p>  
+        <a href="mailto:someone@microsoft.com?subject=Hello%20again">邮箱</a>  
+        <p>品牌名称:山大音乐商城</p>
+       </div>
+      
+      <div id="socialMedia" class="span3 pull-right">
+        <h5>相关软件</h5>
+        <a href="http://music.163.com/"><img width="60" height="60" src="{% static "front/images/wyyyy.jpg" %} " title="网易云音乐" alt="网易云音乐"/></a>
+        <a href="http://weibo.com/2443349917/profile?topnav=1&wvr=6"><img width="60" height="60" src="{% static "front/images/wb.jpg" %} "  title="微博" alt="微博"/></a>
+        <img width="60" height="60" src="{% static "front/images/ewm.jpg" %} "title="扫描二维码 关注更多商品信息" alt="扫描二维码 关注更多商品信息"/>
+       </div> 
+     </div>
+    <p class="pull-right">&copy;音乐商城</p>
+  </div><!-- Container End -->
+  </div>
+<!-- Placed at the end of the document so the pages load faster ============================================= -->
+  <script src="{% static 'front/jquery.js' %}" type="text/javascript"></script>
+  <script src="{% static 'front/bootstrap.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'front/prettify.js' %}"></script>
+  
+  <script src="{% static 'front/bootshop.js' %}"></script>
+    <script src="{% static 'front/jquery.lightbox-0.5.js' %}"></script>
+  
+  
+  <!-- Themes switcher section ============================================================================================= -->
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
-</html>
+</html>  

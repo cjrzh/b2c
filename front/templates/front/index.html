@@ -1,42 +1,509 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+<!--Less styles --> 
+   <!-- Other Less css file //different less files has different color scheam
+  <link rel="stylesheet/less" type="text/css" href="themes/less/simplex.less">
+  <link rel="stylesheet/less" type="text/css" href="themes/less/classified.less">
+  <link rel="stylesheet/less" type="text/css" href="themes/less/amelia.less">  MOVE DOWN TO activate
+  -->
+  <!--<link rel="stylesheet/less" type="text/css" href="themes/less/bootshop.less">
+  <script src="themes/js/less.js" type="text/javascript"></script> -->
+  
+<!-- Bootstrap style --> 
+    <link id="callCss" rel="stylesheet" href="{% static 'front/bootstrap.min.css' %}" media="screen"/>
+    
+    <link href="{% static 'front/base.css' %}"  rel="stylesheet" media="screen"/>
+<!-- Bootstrap style responsive --> 
+  <link href="{% static 'front/bootstrap-responsive.min.css' %}" rel="stylesheet"/>
+  <link href="{% static 'front/font-awesome.css' %}" rel="stylesheet" type="text/css">
+<!-- Google-code-prettify --> 
+  <link href=href="{% static 'front/prettify.css' %}" rel="stylesheet"/>
+<!--fav and touch icons -->
+    <link rel="shortcut icon" href="themes/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="themes/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="themes/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="themes/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="themes/images/ico/apple-touch-icon-57-precomposed.png">
+  <style type="text/css" id="enject"></style> 
+    <title>音乐商城-主页</title>
+  </head>
+<body>
+<div id="header">
+<div class="container">
 
-{% load staticfiles %}
-
-{% block title %}首页{% endblock %}
-
-{% block body_block %}
+<!-- Navbar ================================================== -->
+<div id="logoArea" class="navbar">
+<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+</a>
+  <div class="navbar-inner">
+    <a class="brand" href="/front/"><span class="glyphicon glyphicon-music">音乐商城</a>
+    <form class="form-inline navbar-search" method="post" action="#" >
+    <input id="srchFld" class="srchTxt" type="text" />
+      <button type="submit" id="submitButton" class="btn btn-primary">搜索</button>
+    </form>
+    <ul id="topMenu" class="nav pull-right">
+    <li><a href="{% url 'front:index' %}"><span class="glyphicon glyphicon-home">首页</a></li>
     {% if user.is_authenticated %}
-        <div class="page-header">
+                    <li><a href="{% url 'auth_logout' %}?next=/front/"><span class="glyphicon glyphicon-remove">退出</a></li>
+                    <li><a href="{% url 'front:show_cart' %}"><span class="glyphicon glyphicon-shopping-cart">我的购物车</a> </li>
+                {% else %}
+                    <li><a href="{% url 'registration_register' %}"><span class="glyphicon glyphicon-heart-empty">注册</a></li>
+                    <li><a href="{% url 'auth_login' %}"><span class="glyphicon glyphicon-user">登陆</a></li>
+                {% endif %}
+                <li><a href="{% url 'front:about' %}"><span class="glyphicon glyphicon-info-sign">关于</a></li>
 
-        <h1>你好,{{ user.username }}!欢迎光临!</h1>
-    {% else %}
-        <h1>你好,欢迎光临!</h1>
-    {% endif %}
+                 {% if user.is_staff %}
+              <li><a href="{% url 'front:administrator' %}"><span class="glyphicon glyphicon-cog">后台管理</a></li>
+               {% endif %}
+            </ul>
+            
+  </div>
 </div>
-
-    <div class="row placeholders">
-        <div class="col-xs-12 col-sm-6 placeholder">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">推荐物品</h3>
-                </div>
-            </div>
-
-            {% if wares %}
-                <ul class="list-group">
-                    {% for ware in wares %}
-                        <li class="list-group-item">
-{#                            <a href="{{ page.url }}">{{ page.title }}</a>#}
-                            {{ ware.name }}
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <strong>当前没有物品</strong>
-            {% endif %}
+</div>
+</div>
+<!-- Header End====================================================================== -->
+<div id="carouselBlk">
+  <div id="myCarousel" class="carousel slide">
+    <div class="carousel-inner">
+<!-- Sidebar ================================================== -->
+      <div class="item active">
+      <div class="container">
+      <a href="#"><img style="width:100%" src="{% static "front/images/lady.jpg" %} " alt="Lady GaGa Born this way"/></a>
+      <div class="carousel-caption">
+          <h4>Second Thumbnail label</h4>
+          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
         </div>
+      </div>
+      </div>
+      <div class="item">
+      <div class="container">
+      <a href="#"><img style="width:100%" src="{% static "front/images/cjy.jpg" %} "alt="蔡健雅 失语者"/></a>
+        <div class="carousel-caption">
+          <h4>Second Thumbnail label</h4>
+          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+        </div>
+      </div>
+      </div>
+      <div class="item">
+      <div class="container">
+      <a href="#"><img src="{% static "front/images/big.jpg" %} "alt="BigBang IF YOU"/></a>
+      <div class="carousel-caption">
+          <h4>Second Thumbnail label</h4>
+          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+        </div>
+      
+      </div>
+      </div>
+       <div class="item">
+       <div class="container">
+      <a href="register.html"><img src="{% static "front/images/zhm.jpg" %} "alt="张惠妹 阿密特2"/></a>
+      <div class="carousel-caption">
+          <h4>Second Thumbnail label</h4>
+          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+        </div>
+       
+      </div>
+      </div>
+       <div class="item">
+       <div class="container">
+      <a href="register.html"><img src="{% static "front/images/zjl.jpg"%} "alt="周杰伦 床边故事"/></a>
+      <div class="carousel-caption">
+          <h4>Second Thumbnail label</h4>
+          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+      </div>
+      </div>
+      </div>
+       <div class="item">
+       <div class="container">
+      <a href="register.html"><img src="{% static "front/images/mww.jpg" %}" alt="莫文蔚 不散不见"/></a>
+      <div class="carousel-caption">
+          <h4>Second Thumbnail label</h4>
+          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div> 
+</div>
+<div id="mainBody">
+  <div class="container">
+  <div class="row">
+<!-- Sidebar ================================================== -->
+  <div id="sidebar" class="span3">
+    <div class="well well-small"><big>唱片分类</big><span class="badge badge-warning pull-right"><span class="glyphicon glyphicon-music"></span></span></div>
+    <ul id="sideManu" class="nav nav-tabs nav-stacked">
+      {% load front_extras %}
+                {% get_category_list %}
+      <!--<li class="subMenu open"><a> ELECTRONICS [230]</a>
+        <ul>
+        <li><a class="active" href="products.html"><i class="icon-chevron-right"></i>Cameras (100) </a></li>
+        <li><a href="products.html"><i class="icon-chevron-right"></i>Computers, Tablets & laptop (30)</a></li>
+        <li><a href="products.html"><i class="icon-chevron-right"></i>Mobile Phone (80)</a></li>
+        <li><a href="products.html"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li>
+        </ul>
+      </li>
+      <li class="subMenu"><a> CLOTHES [840] </a>
+      <ul style="display:none">
+        <li><a href="products.html"><i class="icon-chevron-right"></i>Women's Clothing (45)</a></li>
+        <li><a href="products.html"><i class="icon-chevron-right"></i>Women's Shoes (8)</a></li>                        
+        <li><a href="products.html"><i class="icon-chevron-right"></i>Women's Hand Bags (5)</a></li>  
+        <li><a href="products.html"><i class="icon-chevron-right"></i>Men's Clothings  (45)</a></li>
+        <li><a href="products.html"><i class="icon-chevron-right"></i>Men's Shoes (6)</a></li>                        
+        <li><a href="products.html"><i class="icon-chevron-right"></i>Kids Clothing (5)</a></li>                        
+        <li><a href="products.html"><i class="icon-chevron-right"></i>Kids Shoes (3)</a></li>                       
+      </ul>
+      </li>
+      <li class="subMenu"><a>FOOD AND BEVERAGES [1000]</a>
+        <ul style="display:none">
+        <li><a href="products.html"><i class="icon-chevron-right"></i>Angoves  (35)</a></li>
+        <li><a href="products.html"><i class="icon-chevron-right"></i>Bouchard Aine & Fils (8)</a></li>                       
+        <li><a href="products.html"><i class="icon-chevron-right"></i>French Rabbit (5)</a></li>  
+        <li><a href="products.html"><i class="icon-chevron-right"></i>Louis Bernard  (45)</a></li>
+        <li><a href="products.html"><i class="icon-chevron-right"></i>BIB Wine (Bag in Box) (8)</a></li>                        
+        <li><a href="products.html"><i class="icon-chevron-right"></i>Other Liquors & Wine (5)</a></li>                       
+        <li><a href="products.html"><i class="icon-chevron-right"></i>Garden (3)</a></li>                       
+        <li><a href="products.html"><i class="icon-chevron-right"></i>Khao Shong (11)</a></li>                        
+      </ul>
+      </li>
+      <li><a href="products.html">HEALTH & BEAUTY [18]</a></li>
+      <li><a href="products.html">SPORTS & LEISURE [58]</a></li>
+      <li><a href="products.html">BOOKS & ENTERTAINMENTS [14]</a></li>-->
+    </ul>
+    <br/>
+      <div class="thumbnail">
+      <img src="{% static "front/images/wyt.jpg" %} " alt="五月天 最新专辑"/>
+      <div class="caption">
+        <h5>五月天 第二人生</h5>
+        <h4 style="text-align:center"> <a class="btn" href="#">加入购物车<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥42.6</a></h4>
+      </div>
+      </div><br/>
+      <div class="thumbnail">
+        <img src="{% static "front/images/sdy.jpg" %} " title="宋冬野 鸽子" alt="宋冬野 鸽子">
+        <div class="caption">
+          <h5>宋冬野 鸽子</h5>
+            <h4 style="text-align:center"> <a class="btn" href="#">加入购物车<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥28.7</a></h4>
+        </div>
+        </div><br/>
+      <div class="thumbnail">
+        <img src="{% static "front/images/payment_methods.png" %} " title="Bootshop Payment Methods" alt="Payments Methods">
+        <div class="caption">
+          <h5>Payment Methods</h5>
+        </div>
+        </div>
+  </div>
+<!-- Sidebar end=============================================== -->
+<div class="span9">   
+      <div class="well well-small">
+      <h4>热销专辑<small class="pull-right">欲购从速</small></h4>
+      <div class="row-fluid">
+      <div id="featured" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+        <ul class="thumbnails">
+        <li class="span3">
+          <div class="thumbnail">
+          <i class="tag"></i>
+          <a href="#"><img src="{% static "front/images/big.jpg" %} "alt="BigBang IF YOU"></a>
+          <div class="caption">
+            <h5>BigBang IF YOU</h5>
+            <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
+          </div>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+          <i class="tag"></i>
+          <a href="#"><img src="{% static "front/images/mww.jpg" %} " alt="不散不见"></a>
+          <div class="caption">
+            <h5>莫文蔚 不散不见</h5>
+            <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
+          </div>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+          <i class="tag"></i>
+          <a href="#"><img src="{% static "front/images/cjy.jpg" %} " alt="蔡健雅 失语者"></a>
+          <div class="caption">
+            <h5>蔡健雅 失语者</h5>
+             <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
+          </div>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+          <i class="tag"></i>
+          <a href="#"><img src="{% static "front/images/zjl.jpg" %} " alt="周杰伦 床边故事"></a>
+          <div class="caption">
+            <h5>周杰伦 床边故事</h5>
+             <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
+          </div>
+          </div>
+        </li>
+        </ul>
+        </div>
+         <div class="item">
+        <ul class="thumbnails">
+        <li class="span3">
+          <div class="thumbnail">
+          <i class="tag"></i>
+          <a href="#"><img src="{% static "front/images/zhm.jpg" %} " alt="张惠妹 阿密特2"></a>
+          <div class="caption">
+            <h5>张惠妹 阿密特2</h5>
+            <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
+          </div>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+          <i class="tag"></i>
+          <a href="#"><img src="{% static "front/images/wyt1.jpg" %} " alt="五月天 第二人生"></a>
+          <div class="caption">
+            <h5>五月天 第二人生</h5>
+            <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥42.6</span></h4>
+          </div>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+          <a href="#"><img src="{% static "front/images/sdy1.jpg" %} " alt="宋冬野 鸽子"></a>
+          <div class="caption">
+            <h5>宋冬野 鸽子</h5>
+             <h4><a class="btn" href="product_details.html">浏览</a> <span class="pull-right">￥28.7</span></h4>
+          </div>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+          <a href="#"><img src="{% static "front/images/syz1.jpg" %} " alt="孙燕姿 是时候"></a>
+          <div class="caption">
+            <h5>孙燕姿 是时候</h5>
+             <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
+          </div>
+          </div>
+        </li>
+        </ul>
+        </div>
+         <div class="item">
+        <ul class="thumbnails">
+        <li class="span3">
+          <div class="thumbnail">
+          <a href="#"><img src="{% static "front/images/ansmh1.png" %} " alt="安奈室美惠 play"></a>
+          <div class="caption">
+            <h5>安奈室美惠 PLay</h5>
+            <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
+          </div>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+          <a href="#"><img src="{% static "front/images/cyl1.jpg" %} "  alt="蔡依林 我呸！"></a>
+          <div class="caption">
+            <h5>蔡依林 我呸！</h5>
+            <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
+          </div>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+          <a href="#"><img src="{% static "front/images/cj1.jpg" %} "alt="崔健 新长征路上"></a>
+          <div class="caption">
+            <h5>崔健 新长征路上</h5>
+             <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
+          </div>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+          <a href="#"><img src="{% static "front/images/mjl1.jpg" %} " alt="麦浚龙 罗生门"></a>
+          <div class="caption">
+            <h5>麦浚龙 罗生门</h5>
+             <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
+          </div>
+          </div>
+        </li>
+        </ul>
+        </div>
+         <!--<div class="item">
+        <ul class="thumbnails">
+        <li class="span3">
+          <div class="thumbnail">
+          <a href="product_details.html"><img src="themes/images/products/2.jpg" alt=""></a>
+          <div class="caption">
+            <h5>Product name</h5>
+            <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
+          </div>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+          <a href="product_details.html"><img src="themes/images/products/3.jpg" alt=""></a>
+          <div class="caption">
+            <h5>Product name</h5>
+            <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
+          </div>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+          <a href="product_details.html"><img src="themes/images/products/4.jpg" alt=""></a>
+          <div class="caption">
+            <h5>Product name</h5>
+             <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
+          </div>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+          <a href="product_details.html"><img src="themes/images/products/5.jpg" alt=""></a>
+          <div class="caption">
+            <h5>Product name</h5>
+             <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
+          </div>
+          </div>
+        </li>
+        </ul>
+        </div>-->
+        </div>
+        <a class="left carousel-control" href="#featured" data-slide="prev">‹</a>
+        <a class="right carousel-control" href="#featured" data-slide="next">›</a>
+        </div>
+        </div>
+    </div>
+    <h4>最新专辑</h4>
+        <ul class="thumbnails">
+        <li class="span3">
+          <div class="thumbnail">
+          <a  href="#"><img width="300px" height="300px" src="{% static "front/images/zsh1.jpg" %} " alt="张韶涵 再见之前"/></a>
+          <div class="caption">
+            <h5>张韶涵 再见之前</h5>
+            <p> 
+            暌违多年，天后来袭. 
+            </p>
+           
+            <h4 style="text-align:center"> <a class="btn" href="#">加入购物车 <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥38.6</a></h4>
+          </div>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+          <a  href="#"><img width="300px" height="300px" src="{% static "front/images/syzk1.jpg" %} " alt="孙燕姿 克卜勒"/></a>
+          <div class="caption">
+            <h5>孙燕姿 克卜勒</h5>
+            <p> 
+            孕后首发 重返歌坛 
+            </p>
+           <h4 style="text-align:center"> <a class="btn" href="#">加入购物车<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥38.6</a></h4>
+          </div>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+          <a  href="#"><img width="300px" height="300px" src="{% static "front/images/bb.jpg" %} " alt="Beyonce HALO"/></a>
+          <div class="caption">
+            <h5>Beyonce HALO</h5>
+            <p> 
+            国际水准 不容错过. 
+            </p>
+             <h4 style="text-align:center"> <a class="btn" href="#">加入购物车<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥38.6</a></h4>
+          </div>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+          <a  href="#"><img width="300px" height="300px" src="{% static "front/images/ka1.jpg" %} " alt="Katy pretty ET"/></a>
+          <div class="caption">
+            <h5>Katy pretty ET</h5>
+            <p> 
+            水果粉的又一次狂欢. 
+            </p>
+            <h4 style="text-align:center"> <a class="btn" href="#">加入购物车<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥38.6</a></h4>
+          </div>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+          <a  href="#"><img width="300px" height="300px" src="{% static "front/images/wf1.jpg" %} " alt="王菲 寓言"/></a>
+          <div class="caption">
+            <h5>王菲 寓言</h5>
+            <p> 
+            多年前的实验之声. 
+            </p>
+            <h4 style="text-align:center"></a> <a class="btn" href="#">加入购物车 <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥38.6</a></h4>
+          </div>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+          <a  href="#"><img width="300px" height="300px" src="{% static "front/images/pjh1.jpg" %} "alt="彭佳慧 大龄女子"/></a>
+          <div class="caption">
+            <h5>彭佳慧 大龄女子</h5>
+            <p> 
+            金曲歌后 实至名归. 
+            </p>
+             <h4 style="text-align:center"> <a class="btn" href="#">加入购物车<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥38.6</a></h4>
+          </div>
+          </div>
+        </li>
+        </ul> 
 
     </div>
+    </div>
+  </div>
+</div>
+<!-- Footer ================================================================== -->
+  <div  id="footerSection">
+  <div class="container">
+    <div class="row">
+      <div class="span3">
+        <h5>账户</h5>
+        <a href="{% url 'front:index' %}"><span class="glyphicon glyphicon-home">首页</a>
+        <a href="{% url 'front:show_cart' %}"><span class="glyphicon glyphicon-shopping-cart">我的购物车</a>
+        <a href="{% url 'registration_register' %}"><span class="glyphicon glyphicon-heart-empty">注册</a>
+        <a href="{% url 'auth_login' %}"><span class="glyphicon glyphicon-user">登陆</a> 
+        <a href="{% url 'auth_logout' %}?next=/front/"><span class="glyphicon glyphicon-remove">退出</a>
+       </div>
+      <div class="span3">
+        <h5>商家信息</h5>
+        <p>电话：17865135006</p>  
+        <p>地址：山东大学齐鲁软件学院<p>  
+        <a href="mailto:someone@microsoft.com?subject=Hello%20again">邮箱</a>  
+        <p>品牌名称:山大音乐商城</p>
+       </div>
+      
+      <div id="socialMedia" class="span3 pull-right">
+        <h5>相关软件</h5>
+        <a href="http://music.163.com/"><img width="60" height="60" src="{% static "front/images/wyyyy.jpg" %} " title="网易云音乐" alt="网易云音乐"/></a>
+        <a href="http://weibo.com/2443349917/profile?topnav=1&wvr=6"><img width="60" height="60" src="{% static "front/images/wb.jpg" %} "  title="微博" alt="微博"/></a>
+        <img width="60" height="60" src="{% static "front/images/ewm.jpg" %} "title="扫描二维码 关注更多商品信息" alt="扫描二维码 关注更多商品信息"/>
+       </div> 
+     </div>
+    <p class="pull-right">&copy;音乐商城</p>
+  </div><!-- Container End -->
+  </div>
+<!-- Placed at the end of the document so the pages load faster ============================================= -->
+  <script src="{% static 'front/jquery.js' %}" type="text/javascript"></script>
+  <script src="{% static 'front/bootstrap.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'front/prettify.js' %}"></script>
+  
+  <script src="{% static 'front/bootshop.js' %}"></script>
+    <script src="{% static 'front/jquery.lightbox-0.5.js' %}"></script>
+  
+  
+  <!-- Themes switcher section ============================================================================================= -->
 
-
-{% endblock %}
+</body>
+</html>

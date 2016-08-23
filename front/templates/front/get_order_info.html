@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}订单结算页{% endblock %}
+
+{% block body_block %}
+<ul class="breadcrumb">
+    <li><a href="{% url 'front:index' %}"><big>首页</big></a> <span class="divider">/</span></li>
+    <li class="active"><big>结算页</big></li>
+    </ul>
+
+    <!-- 收货地址------------------------>
+  <!--  <h2>收货人信息:</h2>
+    {% if userprofile %}
+    <br>
+    {{ userprofile.realname }}
+    {{ userprofile.addr }}
+        <a href="{% url 'front:update_userprofile' %}">编辑</a>
+    {% else %}
+        <a href="{% url 'front:add_userprofile' %}">添加收货人信息</a>
+    {% endif %}
+
+     支付方式------------------------
+    <br><h2>支付方式</h2>
+    货到付款-->
+
+
+
+{% if items %}
+    <h4>送货清单</h4>
+        <table align="center" width="880" height="40" cellspacing="0" cellpadding="0" style="border:1px solid ;background-color:black;">
+            <tr>
+            <td width="390px"><p><font color="#FFFFFF">商品</font></p></td>
+            <td width="75px"><font color="#FFFFFF">单价</font></td>
+
+          </tr>
+       </table>
+                {% for item in items %}
+        <table align="center" width="880" cellspacing="0" cellpadding="0" style="border:1px solid ;">
+          <tr>
+            <td width="40px" align="center"><img src="/media/{{ item.ware.picture }}" width="80" height="80"/></td>
+            <td width="300px">{{ item.ware }}</td>
+            <td width="70px"><font color="red">￥{{ item.ware.price }}</font></td>
+
+          </tr>
+       </table>
+
+    {% endfor %}
+    <br><br>
+    <table align="center" width="880" height="40" cellspacing="0" cellpadding="0" style="border:0px solid ;">
+            <tr>
+            <td width="390px"></td>
+            <td width="130px"></td>
+            <td width="70px"></td>
+            <td width="70px"></td>
+            <td width="80px"></td>
+            <td width="350px">
+     <p style="float:right;"> 已选择<font color="red">{{ num }}</font>件商品,
+                <br></br>
+                应付总额:<font color="red" size="5pt">￥{{ price }}</font>
+  </table>
+
+
+           <br>
+           <br><br><br>
+           <hr class="soft"/>
+           <h4>收货人信息:</h4>
+    {% if userprofile %}
+    <ul>
+    <li><big>
+    姓名：{{ userprofile.realname }}</big></li>
+    <hr/>
+    <li><big>家庭住址：{{ userprofile.addr }}
+    </big><a style="float:right;"href="{% url 'front:update_userprofile' %}"class="btn btn-default btn-lg active" role="button"><p>修改配送信息</p></a></li>
+  </ul>
+  <hr/>
+        
+    {% else %}
+        <a href="{% url 'front:add_userprofile' %}"class="btn btn-default btn-lg active" role="button"><p>添加收货人信息</p></a>
+    {% endif %}
+   </hr>
+
+    <h4>支付方式:</h4>
+    <ul>
+    <li><big>货到付款</big></li>
+    <li><big>账户余额</big></li>
+  </ul>
+  <hr/>
+            <div>
+        <table align="center" width="880" height="40" cellspacing="0" cellpadding="0" style="border:0px solid ;">
+            <tr>
+            <td width="390px"></td>
+            <td width="130px"></td>
+            <td width="70px"></td>
+            <td width="70px"></td>
+            <td width="80px"></td>
+            <td width="350px">
+
+               
+                <a href="{% url 'front:get_order_info' %}">
+                    <img style="float:right;"src="{% static "front/images/tijiao.png" %}" width="120px"  alt="图片" />
+                </a>
+            </td>
+
+          </tr>
+       </table>
+
+    </div>
+            {% else %}
+            <br>
+            <br>
+            <div>
+        <table align="center" width="880" height="40" cellspacing="0" cellpadding="0" style="border:0px">
+            <tr>
+            <td width="300px"></td>
+            <td width="580px"><h4>购物车空空的哦~，去看看<a href="{% url 'front:index' %}">心仪的商品吧~</a></h4></td>
+          </tr>
+       </table>
+    </div>
+     {% endif %}
+<hr/>
+<!-- 收货地址------------------------>
+    
+           
+{% endblock %}

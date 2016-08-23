@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}{{ware.name}}{% endblock %}
+{% block body_block %}
+<ol class="breadcrumb">
+        <li><a href="{% url 'front:index' %}">首页</a></li>
+        <li class="active">{{ ware.name }}</li>
+    </ol>
+    <div id="page" >
+  <div id="top">
+  <div style="margin: 0 auto;">  
+  <div style="width: 400px; height: 400px; float: left; "> 
+  <a href="/media/{{ ware.picture }}"  title="{{ ware.name}}">
+          <img src="/media/{{ ware.picture }}" width="300px" height="300px" alt="{{ ware.name}}"/>       
+          </a>   
+         </div>
+    <div style= "width: 400px; height: 400px; float: left">
+    	<table border="0" cellspacing="25" cellpadding="30" id="table1">
+        <tr>
+        <td style= "height: 80px ">{{ ware.name }}&nbsp;&nbsp;(现货)
+        </td>
+        <td></td>
+      </tr>
+        <td>
+        <tr>
+                <td>价格：</td>
+                <td><font color="red">￥{{ ware.price }}</font></td>
+            </tr>
+            <tr>
+           <td style= "height: 80px; width:150px ">表演者：</td>
+                <td><span style="color:#990000; font-size:20px;">孙燕姿</span><span style="color:#009900;">&nbsp;&nbsp;限时抢购</span></td>
+            </tr>
+            <tr>
+                <td colspan="2"><hr/></td>
+              </tr>
+              <tr>
+                <td><form action="{% url 'front:add_to_cart' ware.id %}" method="get"><button type="submit" ><span class="glyphicon glyphicon-shopping-cart">加入购物车</button></a>
+                </td>
+              </tr>
+
+   		 </table>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+
+{% endblock %}
+
+

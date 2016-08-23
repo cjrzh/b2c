@@ -1,0 +1,12 @@
+{% if cats %}
+    <ul class="nav nav-sidebar">
+        {% for c in cats %}
+            <li><a href="{% url 'front:category'  c.id %}">{{ c.name }}</a></li>
+
+        {% endfor %}
+
+        {% else %}
+        <li><strong>当前没有分类</strong></li>
+
+    </ul>
+{% endif %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
-from front.forms import CategoryForm, WareForm
+from front.forms import CategoryForm, WareForm,UserProfileForm
 from front.models import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
@@ -34,11 +34,8 @@ def add_category(request):
             # The supplied form contained errors - just print them to the terminal.
             print(form.errors)
     else:
-        # If the request was not a POST, display the form to enter details.
         form = CategoryForm()
 
-    # Bad form (or form details), no form supplied...
-    # Render the form with error messages (if any).
     return render(request, 'front/add_category.html', {'form': form})
 
 def category(request,category_id):
@@ -103,8 +100,15 @@ def show_cart(request):
     user=request.user
     shopcart = ShopCart.objects.get_or_create(user=user)[0]
     items=ShopCartItems.objects.filter(shopCart=shopcart)
+    price=0.0
+    num=0
+    for item in items:
+        num+=1
+        price+=item.ware.price
     context={}
     context['items']=items
+    context['num']=num
+    context['price']=price
     return render(request,'front/show_cart.html',context)
 
 @login_required
@@ -124,3 +128,63 @@ def delete_from_cart(request,ware_id):
     shopcartItem=ShopCartItems.objects.filter(ware=ware).first().delete()
 
     return HttpResponseRedirect('/front/show_cart')
+
+@login_required
+def get_order_info(request):
+    user=request.user
+    shopcart = ShopCart.objects.get_or_create(user=user)[0]
+    items=ShopCartItems.objects.filter(shopCart=shopcart)
+    price=0.0
+    num=0
+    for item in items:
+        num+=1
+        price+=item.ware.price
+    userprofile= UserProfile.objects.filter(user=user).first()
+
+
+    context={}
+    #print(userprofile)
+    context['userprofile']=userprofile
+    context['items']=items
+    context['num']=num
+    context['price']=price
+
+    return render(request,'front/get_order_info.html',context)
+
+@login_required
+def add_userprofile(request):
+    if request.method == 'POST':
+        form = UserProfileForm(data=request.POST)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = request.user
+            profile.save()
+            return HttpResponseRedirect('/front/get_order_info')
+        else:
+            print(form.errors)
+    else:
+        form = UserProfileForm()
+
+    return render(request, 'front/add_userprofile.html', {'form': form})
+
+@login_required
+def update_userprofile(request):
+    userfile=UserProfile.objects.filter(user=request.user).first()
+    if request.method == 'POST':
+        form = UserProfileForm(data=request.POST)
+        if form.is_valid():
+            profile = form.save(commit=False)
+
+
+            userfile.realname=profile.realname
+            userfile.addr=profile.addr
+            userfile.save()
+
+            return HttpResponseRedirect('/front/get_order_info')
+        else:
+            print(form.errors)
+    else:
+        init={'realname':userfile.realname,'addr':userfile.addr}
+        form = UserProfileForm(initial=init)
+
+    return render(request, 'front/update_userprofile.html', {'form': form})

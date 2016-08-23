@@ -3,52 +3,57 @@
 {% block title %}{{ category_name }}{% endblock %}
 
 {% block body_block %}
-    <div class="span9">
-        <ul class="breadcrumb">
-            <li><a href="{% url 'front:index' %}">首页</a> <span class="divider">/</span></li>
-            <li class="active">{{ category_name }}</li>
-        </ul>
-        <h3>{{ category_name }}
-            {% if category %}
+<ul class="breadcrumb">
+        <li><a href="{% url 'front:index' %}"><big>首页</big></a><span class="divider">/</span>
+        </li>
+        <li class="active"><big>{{ category_name }}</big></li>
+    </ul>
+    <h3> {{ category_name }} </h3> 
+  <hr class="soft"/>
+ 
+<br class="clr"/>
 
-                {% if user.is_staff %}
-                    <br>
-                    <a href="/front/category/{{ category.id }}/add_ware/">添加商品</a>
-                {% endif %}
+    {% if category %}
 
-
-                {% if wares %}
-                    <ul>
-                        {% for ware in wares %}
-                            <div class="col-sm-4 col-md-3 col-lg-3 ">
-                                <div class="row">
-                                    <a href="{% url 'front:ware' ware.id %}">
-                                        <img src="/media/{{ ware.picture }}" class="img-responsive" width="400px"
-                                             alt="暂时无法加载"/>
-                                    </a>
-                                    <div class="caption">
-                                        <p>
-                                            <small>
-                                                <font color="red"> ￥{{ ware.price }}</font>
-                                                </br>
-                                                <a href="{% url 'front:ware' ware.id %}"> {{ ware.author }}:{{ ware.name }}</a>
-
-                                            </small>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                   <br> <strong>当前分类没有商品</strong>
-                {% endif %}
-
-            {% else %}
-                商品分类{{ category_name }}不存在!
+         {% if user.is_staff %}
+            <br>
+                <a href="/front/category/{{category.id}}/add_ware/">添加商品</a>
             {% endif %}
+
+               {% if wares %}
+               <div class="tab-content">
+                <div class="tab-pane  active" id="blockView">
+                <ul class="thumbnails">
+                {% for ware in wares %}
+                <li class="span3">
+                <div class="thumbnail">
+         <a href="{% url 'front:ware' ware.id %}"><img src = "/media/{{ ware.picture }}" width="200" height="200" class="img-responsive" alt={{ ware.name }}>
+        </a>
+        <div class="caption">
+          <p><small>{{ ware.author}}&nbsp;&nbsp;{{ ware.company}}</h4></small></p>
+         <form action="{% url 'front:add_to_cart' ware.id %}" method="get">
+          <big><font color="red">￥{{ ware.price }}</big></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="sumbit"  class="btn btn-default">加入购物车</button>
+            </form>
+            <!--<button type="submit" class="btn btn-large btn-primary pull-left">加入购物车<i class=" icon-shopping-cart"></i></button>
+        </form>-->
+        </div>
+        </div>
+      </li>     
+          {% endfor %}
+        </ul>
+      </div>
+        </div>
+                    
+        {% else %}
+                <p style="text-align:center;font-size:20px"><big>当前分类没有商品</big></p>
+                {% endif %}
+
+        {% else %}
+                 商品分类{{ category_name }}不存在!
+    {% endif %}
 
 
 {% endblock %}
+
+

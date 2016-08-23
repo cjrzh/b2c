@@ -23,9 +23,9 @@ class Ware(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
+    realname=models.CharField(max_length=128,blank=True)
     addr = models.CharField(max_length=256,blank=True)
     balance = models.FloatField(default=0)
-    website = models.URLField(blank=True)
 
 
     def __str__(self):
@@ -51,6 +51,6 @@ class ShopCart(models.Model):
 
 class ShopCartItems(models.Model):
     shopCart=models.ForeignKey(ShopCart)
-    ware=models.OneToOneField(Ware)
+    ware = models.ForeignKey(Ware)
     def __str__(self):
         return self.id

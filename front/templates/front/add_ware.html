@@ -5,7 +5,7 @@
 {% block title %}添加商品{% endblock %}
 
 {% block body_block %}
-    <h1>Add a Page</h1>
+    <h1>添加专辑</h1>
     {% if category %}
         <form id="page_form" method="post" enctype="multipart/form-data"
               action="{% url 'front:add_ware' category.id %}">
