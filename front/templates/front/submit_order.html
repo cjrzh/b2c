@@ -7,5 +7,5 @@
 {% block body_block %}
 
 <h1> 订单提交成功啦O(∩_∩)O～
-    点此查看订单，点此返回
+    <a href="{% url 'front:show_orders' %}"><big>点此查看订单</big></a>，点此返回
 {% endblock %}

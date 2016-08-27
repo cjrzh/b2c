@@ -34,6 +34,7 @@ class UserProfile(models.Model):
 class Order(models.Model):
     user=models.ForeignKey(User)
     date=models.DateTimeField("order summit time")
+    price=models.FloatField()
     def __str__(self):
         return self.id
 

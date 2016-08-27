@@ -10,9 +10,7 @@ def index(request):
     template_name = 'front/index.html'
     #categories = Category.objects.order_by('id')[:5]
     wares = Ware.objects.order_by('id')[:20]
-    #print(wares.__getitem__(0))
     context={}
-    #context['categories']=categories
     context['wares'] = wares
     response = render(request,template_name=template_name,context=context)
 
@@ -202,10 +200,23 @@ def submit_order(request):
     user = request.user
     shopcart = ShopCart.objects.get_or_create(user=user)[0]
     items = ShopCartItems.objects.filter(shopCart=shopcart)
-    order=Order(user=user,date=timezone.now())
+    price = 0.0
+    for item in items:
+        price += item.ware.price
+    order=Order(user=user,date=timezone.now(),price=price)
     order.save()
     for item in items:
         #print(item.ware.name)
         OrderItems.objects.get_or_create(order=order, ware=item.ware)
     clear_cart(request)
     return render(request, 'front/submit_order.html')
+
+@login_required
+def show_orders(request):
+    user = request.user
+    orders=Order.objects.filter(user=user).order_by('date')
+    context={}
+    context['orders'] = orders
+    # for order in orders:
+    #     print(order.orderitems_set.all())
+    return render(request, 'front/show_orders.html',context)
