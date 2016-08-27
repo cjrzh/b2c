@@ -33,7 +33,7 @@ class UserProfile(models.Model):
 
 class Order(models.Model):
     user=models.ForeignKey(User)
-    date=models.DateField()
+    date=models.DateTimeField("order summit time")
     def __str__(self):
         return self.id
 

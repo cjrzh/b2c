@@ -4,6 +4,7 @@ from front.forms import CategoryForm, WareForm,UserProfileForm
 from front.models import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
+from django.utils import timezone
 
 def index(request):
     template_name = 'front/index.html'
@@ -148,7 +149,7 @@ def get_order_info(request):
     context['userprofile']=userprofile
     context['items']=items
     context['num']=num
-    context['price']=price
+    context['price']='%0.2f'%price
 
     return render(request,'front/get_order_info.html',context)
 
@@ -189,3 +190,22 @@ def update_userprofile(request):
         form = UserProfileForm(initial=init)
 
     return render(request, 'front/update_userprofile.html', {'form': form})
+
+@login_required
+def clear_cart(request):
+    user=request.user
+    shopcart = ShopCart.objects.get_or_create(user=user)[0]
+    ShopCartItems.objects.filter(shopCart=shopcart).delete()
+
+@login_required
+def submit_order(request):
+    user = request.user
+    shopcart = ShopCart.objects.get_or_create(user=user)[0]
+    items = ShopCartItems.objects.filter(shopCart=shopcart)
+    order=Order(user=user,date=timezone.now())
+    order.save()
+    for item in items:
+        #print(item.ware.name)
+        OrderItems.objects.get_or_create(order=order, ware=item.ware)
+    clear_cart(request)
+    return render(request, 'front/submit_order.html')
