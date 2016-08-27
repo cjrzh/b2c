@@ -79,7 +79,7 @@
 <!-- Sidebar ================================================== -->
       <div class="item active">
       <div class="container">
-      <a href="{% url 'front:ware' wares.18.id %}"><img style="width:100%" src="{% static "front/images/lady.jpg" %}  " alt="Lady GaGa Born this way"/></a>
+      <a href="#"><img style="width:100%" src="{% static "front/images/lady.jpg" %} " alt="Lady GaGa Born this way"/></a>
       <div class="carousel-caption">
           <h4>Second Thumbnail label</h4>
           <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -88,7 +88,7 @@
       </div>
       <div class="item">
       <div class="container">
-      <a href="{% url 'front:ware' wares.11.id %}"><img style="width:100%" src="{% static "front/images/cjy.jpg" %} "alt="蔡健雅 失语者"/></a>
+      <a href="#"><img style="width:100%" src="{% static "front/images/cjy.jpg" %} "alt="蔡健雅 失语者"/></a>
         <div class="carousel-caption">
           <h4>Second Thumbnail label</h4>
           <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -97,7 +97,7 @@
       </div>
       <div class="item">
       <div class="container">
-      <a href="{% url 'front:ware' wares.9.id %}"><img src="{% static "front/images/big.jpg" %} "alt="BigBang IF YOU"/></a>
+      <a href="#"><img src="{% static "front/images/big.jpg" %} "alt="BigBang IF YOU"/></a>
       <div class="carousel-caption">
           <h4>Second Thumbnail label</h4>
           <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -107,7 +107,7 @@
       </div>
        <div class="item">
        <div class="container">
-      <a href="{% url 'front:ware' wares.13.id %}"><img src="{% static "front/images/zhm.jpg" %} "alt="张惠妹 阿密特2"/></a>
+      <a href="register.html"><img src="{% static "front/images/zhm.jpg" %} "alt="张惠妹 阿密特2"/></a>
       <div class="carousel-caption">
           <h4>Second Thumbnail label</h4>
           <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -117,7 +117,7 @@
       </div>
        <div class="item">
        <div class="container">
-      <a href="{% url 'front:ware' wares.12.id %}"><img src="{% static "front/images/zjl.jpg"%} "alt="周杰伦 床边故事"/></a>
+      <a href="register.html"><img src="{% static "front/images/zjl.jpg"%} "alt="周杰伦 床边故事"/></a>
       <div class="carousel-caption">
           <h4>Second Thumbnail label</h4>
           <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -126,7 +126,7 @@
       </div>
        <div class="item">
        <div class="container">
-      <a href="{% url 'front:ware' wares.10.id %}"><img src="{% static "front/images/mww.jpg" %}" alt="莫文蔚 不散不见"/></a>
+      <a href="register.html"><img src="{% static "front/images/mww.jpg" %}" alt="莫文蔚 不散不见"/></a>
       <div class="carousel-caption">
           <h4>Second Thumbnail label</h4>
           <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -184,17 +184,17 @@
     </ul>
     <br/>
       <div class="thumbnail">
-      <a href="{% url 'front:ware' wares.4.id %}"><img src = "/media/{{ wares.4.picture }}"alt="五月天 最新专辑"/></a>
+      <img src="{% static "front/images/wyt.jpg" %} " alt="五月天 最新专辑"/>
       <div class="caption">
-        <h5>{{wares.4.author}} {{wares.4.name}}</h5>
-        <h4 style="text-align:center"> <a class="btn" href="{% url 'front:ware' wares.4.id %}">查看专辑<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="{% url 'front:ware' wares.4.id %}">￥{{wares.4.price}}</a></h4>
+        <h5>五月天 第二人生</h5>
+        <h4 style="text-align:center"> <a class="btn" href="#">加入购物车<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥42.6</a></h4>
       </div>
       </div><br/>
       <div class="thumbnail">
-        <a href="{% url 'front:ware' wares.5.id %}"><img src = "/media/{{ wares.5.picture }}" title="宋冬野 鸽子" alt="宋冬野 鸽子">
+        <img src="{% static "front/images/sdy.jpg" %} " title="宋冬野 鸽子" alt="宋冬野 鸽子">
         <div class="caption">
-          <h5>{{wares.5.author}} {{wares.5.name}}</h5>
-            <h4 style="text-align:center"> <a class="btn" href="#">查看专辑<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥{{wares.5.price}}</a></h4>
+          <h5>宋冬野 鸽子</h5>
+            <h4 style="text-align:center"> <a class="btn" href="#">加入购物车<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥28.7</a></h4>
         </div>
         </div><br/>
       <div class="thumbnail">
@@ -216,40 +216,40 @@
         <li class="span3">
           <div class="thumbnail">
           <i class="tag"></i>
-          <a href="{% url 'front:ware' wares.9.id %}"><img src="/media/{{ wares.9.picture }} "alt="BigBang IF YOU"></a>
+          <a href="#"><img src="{% static "front/images/big.jpg" %} "alt="BigBang IF YOU"></a>
           <div class="caption">
-            <h5>{{wares.9.author}} {{wares.9.name}}</h5>
-            <h4><a class="btn" href="{% url 'front:ware' wares.9.id %}">浏览</a> <span class="pull-right">￥{{wares.9.price}}</span></h4>
+            <h5>BigBang IF YOU</h5>
+            <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
           </div>
           </div>
         </li>
         <li class="span3">
           <div class="thumbnail">
           <i class="tag"></i>
-          <a href="{% url 'front:ware' wares.10.id %}"><img src="/media/{{ wares.10.picture }} " alt="不散不见"></a>
+          <a href="#"><img src="{% static "front/images/mww.jpg" %} " alt="不散不见"></a>
           <div class="caption">
-            <h5>{{wares.10.author}} {{wares.10.name}}</h5>
-            <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥{{wares.10.price}}</span></h4>
+            <h5>莫文蔚 不散不见</h5>
+            <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
           </div>
           </div>
         </li>
         <li class="span3">
           <div class="thumbnail">
           <i class="tag"></i>
-          <a href="{% url 'front:ware' wares.11.id %}"><img src="/media/{{ wares.11.picture }}  " alt="蔡健雅 失语者"></a>
+          <a href="#"><img src="{% static "front/images/cjy.jpg" %} " alt="蔡健雅 失语者"></a>
           <div class="caption">
-            <h5>{{wares.11.author}} {{wares.11.name}}</h5>
-             <h4><a class="btn" href="{% url 'front:ware' wares.11.id %}">浏览</a> <span class="pull-right">￥{{wares.11.price}}</span></h4>
+            <h5>蔡健雅 失语者</h5>
+             <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
           </div>
           </div>
         </li>
         <li class="span3">
           <div class="thumbnail">
           <i class="tag"></i>
-          <a href="{% url 'front:ware' wares.12.id %}"><img src="/media/{{ wares.12.picture }} " alt="周杰伦 床边故事"></a>
+          <a href="#"><img src="{% static "front/images/zjl.jpg" %} " alt="周杰伦 床边故事"></a>
           <div class="caption">
-            <h5>{{wares.12.author}} {{wares.12.name}}</h5>
-             <h4><a class="btn" href="{% url 'front:ware' wares.12.id %}">浏览</a> <span class="pull-right">￥{{wares.12.price}}</span></h4>
+            <h5>周杰伦 床边故事</h5>
+             <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
           </div>
           </div>
         </li>
@@ -260,40 +260,40 @@
         <li class="span3">
           <div class="thumbnail">
           <i class="tag"></i>
-          <a href="{% url 'front:ware' wares.13.id %}"><img src="/media/{{ wares.13.picture }} " alt="张惠妹 阿密特2"></a>
+          <a href="#"><img src="{% static "front/images/zhm.jpg" %} " alt="张惠妹 阿密特2"></a>
           <div class="caption">
-            <h5>{{wares.13.author}} {{wares.13.name}}</h5>
-            <h4><a class="btn" href="{% url 'front:ware' wares.13.id %}">浏览</a> <span class="pull-right">￥{{wares.13.price}}</span></h4>
+            <h5>张惠妹 阿密特2</h5>
+            <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
           </div>
           </div>
         </li>
         <li class="span3">
           <div class="thumbnail">
           <i class="tag"></i>
-          <a href="{% url 'front:ware' wares.4.id %}"><img src="/media/{{ wares.4.picture }} " alt="五月天 第二人生"></a>
+          <a href="#"><img src="{% static "front/images/wyt1.jpg" %} " alt="五月天 第二人生"></a>
           <div class="caption">
-            <h5>{{wares.4.author}} {{wares.4.name}}</h5>
-            <h4><a class="btn" href="{% url 'front:ware' wares.4.id %}">浏览</a> <span class="pull-right">￥{{wares.4.price}}</span></h4>
+            <h5>五月天 第二人生</h5>
+            <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥42.6</span></h4>
           </div>
           </div>
         </li>
         <li class="span3">
           <div class="thumbnail">
-          <a href="{% url 'front:ware' wares.5.id %}"><img src="/media/{{ wares.5.picture }} " alt="宋冬野 鸽子"></a>
+          <a href="#"><img src="{% static "front/images/sdy1.jpg" %} " alt="宋冬野 鸽子"></a>
           <div class="caption">
-            <h5>{{wares.5.author}} {{wares.5.name}}</h5>
-             <h4><a class="btn" href="{% url 'front:ware' wares.5.id %}">浏览</a> <span class="pull-right">￥{{wares.5.price}}</span></h4>
+            <h5>宋冬野 鸽子</h5>
+             <h4><a class="btn" href="product_details.html">浏览</a> <span class="pull-right">￥28.7</span></h4>
           </div>
           </div>
         </li>
         <li class="span3">
           <div class="thumbnail">
-          <a href="{% url 'front:ware' wares.1.id %}"><img src="/media/{{ wares.1.picture }} " alt="孙燕姿 是时候"></a>
+          <a href="#"><img src="{% static "front/images/syz1.jpg" %} " alt="孙燕姿 是时候"></a>
           <div class="caption">
-            <h5>{{wares.1.author}} {{wares.1.name}}</h5>
-             <h4><a class="btn" href="{% url 'front:ware' wares.1.id %}">浏览</a> <span class="pull-right">￥{{wares.1.price}}</span></h4>
+            <h5>孙燕姿 是时候</h5>
+             <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
           </div>
-          </div> 
+          </div>
         </li>
         </ul>
         </div>
@@ -301,37 +301,37 @@
         <ul class="thumbnails">
         <li class="span3">
           <div class="thumbnail">
-          <a href="{% url 'front:ware' wares.14.id %}"><img src="/media/{{ wares.14.picture }}  " alt="安奈室美惠 play"></a>
+          <a href="#"><img src="{% static "front/images/ansmh1.png" %} " alt="安奈室美惠 play"></a>
           <div class="caption">
-            <h5>{{wares.14.author}} {{wares.14.name}}</h5>
-            <h4><a class="btn" href="{% url 'front:ware' wares.5.id %}">浏览</a> <span class="pull-right">￥{{wares.14.price}}</span></h4>
+            <h5>安奈室美惠 PLay</h5>
+            <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
           </div>
           </div>
         </li>
         <li class="span3">
           <div class="thumbnail">
-          <a href="{% url 'front:ware' wares.15.id %}"><img src="/media/{{ wares.15.picture }}  "  alt="蔡依林 我呸！"></a>
+          <a href="#"><img src="{% static "front/images/cyl1.jpg" %} "  alt="蔡依林 我呸！"></a>
           <div class="caption">
-            <h5>{{wares.15.author}} {{wares.15.name}}</h5>
-            <h4><a class="btn" href="{% url 'front:ware' wares.14.id %}">浏览</a> <span class="pull-right">￥{{wares.15.price}}</span></h4>
+            <h5>蔡依林 我呸！</h5>
+            <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
           </div>
           </div>
         </li>
         <li class="span3">
           <div class="thumbnail">
-          <a href="{% url 'front:ware' wares.16.id %}"><img src="/media/{{ wares.16.picture }}  "alt="崔健 新长征路上"></a>
+          <a href="#"><img src="{% static "front/images/cj1.jpg" %} "alt="崔健 新长征路上"></a>
           <div class="caption">
-            <h5>{{wares.16.author}} {{wares.16.name}}</h5>
-             <h4><a class="btn" href="{% url 'front:ware' wares.16.id %}">浏览</a> <span class="pull-right">￥{{wares.16.price}}</span></h4>
+            <h5>崔健 新长征路上</h5>
+             <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
           </div>
           </div>
         </li>
         <li class="span3">
           <div class="thumbnail">
-          <a href="{% url 'front:ware' wares.17.id %}"><img src="/media/{{ wares.17.picture }}   " alt="麦浚龙 罗生门"></a>
+          <a href="#"><img src="{% static "front/images/mjl1.jpg" %} " alt="麦浚龙 罗生门"></a>
           <div class="caption">
-            <h5>{{wares.17.author}} {{wares.17.name}}</h5>
-             <h4><a class="btn" href="{% url 'front:ware' wares.17.id %}">浏览</a> <span class="pull-right">￥{{wares.17.price}}</span></h4>
+            <h5>麦浚龙 罗生门</h5>
+             <h4><a class="btn" href="#">浏览</a> <span class="pull-right">￥38.6</span></h4>
           </div>
           </div>
         </li>
@@ -387,74 +387,74 @@
         <ul class="thumbnails">
         <li class="span3">
           <div class="thumbnail">
-          <a  href="{% url 'front:ware' wares.6.id %}"><img width="300px" height="300px" src="/media/{{ wares.6.picture }}" alt="张韶涵 再见之前"/></a>
+          <a  href="#"><img width="300px" height="300px" src="{% static "front/images/zsh1.jpg" %} " alt="张韶涵 再见之前"/></a>
           <div class="caption">
-            <h5>{{wares.6.author}} {{wares.6.name}}</h5>
+            <h5>张韶涵 再见之前</h5>
             <p> 
             暌违多年，天后来袭. 
             </p>
            
-            <h4 style="text-align:center"> <a class="btn" href="{% url 'front:ware' wares.6.id %}">查看专辑<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥{{wares.6.price}}</a></h4>
+            <h4 style="text-align:center"> <a class="btn" href="#">加入购物车 <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥38.6</a></h4>
           </div>
           </div>
         </li>
         <li class="span3">
           <div class="thumbnail">
-          <a  href="{% url 'front:ware' wares.0.id %}"><img width="250px" height="250px" src="/media/{{ wares.0.picture }}" alt="孙燕姿 克卜勒"/></a>
+          <a  href="#"><img width="300px" height="300px" src="{% static "front/images/syzk1.jpg" %} " alt="孙燕姿 克卜勒"/></a>
           <div class="caption">
-            <h5>{{wares.0.author}} {{wares.0.name}}</h5>
+            <h5>孙燕姿 克卜勒</h5>
             <p> 
             孕后首发 重返歌坛 
             </p>
-           <h4 style="text-align:center"> <a class="btn" href="{% url 'front:ware' wares.0.id %}">查看专辑<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥{{wares.0.price}}</a></h4>
+           <h4 style="text-align:center"> <a class="btn" href="#">加入购物车<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥38.6</a></h4>
           </div>
           </div>
         </li>
         <li class="span3">
           <div class="thumbnail">
-          <a  href="{% url 'front:ware' wares.2.id %}"><img width="300px" height="300px" src="/media/{{ wares.2.picture }}" alt="Beyonce HALO"/></a>
+          <a  href="#"><img width="300px" height="300px" src="{% static "front/images/bb.jpg" %} " alt="Beyonce HALO"/></a>
           <div class="caption">
-            <h5>{{wares.2.author}} {{wares.2.name}}</h5>
+            <h5>Beyonce HALO</h5>
             <p> 
             国际水准 不容错过. 
             </p>
-             <h4 style="text-align:center"> <a class="btn" href="{% url 'front:ware' wares.2.id %}">查看专辑<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥{{wares.2.price}}</a></h4>
+             <h4 style="text-align:center"> <a class="btn" href="#">加入购物车<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥38.6</a></h4>
           </div>
           </div>
         </li>
         <li class="span3">
           <div class="thumbnail">
-         <a  href="{% url 'front:ware' wares.3.id %}"><img width="300px" height="300px" src="/media/{{ wares.3.picture }}" alt="Katy pretty ET"/></a>
+          <a  href="#"><img width="300px" height="300px" src="{% static "front/images/ka1.jpg" %} " alt="Katy pretty ET"/></a>
           <div class="caption">
-            <h5>{{wares.3.author}} {{wares.3.name}}</h5>
+            <h5>Katy pretty ET</h5>
             <p> 
             水果粉的又一次狂欢. 
             </p>
-            <h4 style="text-align:center"> <a class="btn" href="{% url 'front:ware' wares.3.id %}">查看专辑<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥{{wares.3.price}}</a></h4>
+            <h4 style="text-align:center"> <a class="btn" href="#">加入购物车<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥38.6</a></h4>
           </div>
           </div>
         </li>
         <li class="span3">
           <div class="thumbnail">
-          <a  href="{% url 'front:ware' wares.7.id %}"><img width="300px" height="300px" src="/media/{{ wares.7.picture }}" alt="王菲 寓言"/></a>
+          <a  href="#"><img width="300px" height="300px" src="{% static "front/images/wf1.jpg" %} " alt="王菲 寓言"/></a>
           <div class="caption">
-            <h5>{{wares.7.author}} {{wares.7.name}}</h5>
+            <h5>王菲 寓言</h5>
             <p> 
             多年前的实验之声. 
             </p>
-            <h4 style="text-align:center"></a> <a class="btn" href="{% url 'front:ware' wares.7.id %}">查看专辑 <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥{{wares.7.price}}</a></h4>
+            <h4 style="text-align:center"></a> <a class="btn" href="#">加入购物车 <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥38.6</a></h4>
           </div>
           </div>
         </li>
         <li class="span3">
           <div class="thumbnail">
-          <a  href="{% url 'front:ware' wares.8.id %}"><img width="300px" height="300px" src="/media/{{ wares.8.picture }}" alt="彭佳慧 大龄女子"/></a>
+          <a  href="#"><img width="300px" height="300px" src="{% static "front/images/pjh1.jpg" %} "alt="彭佳慧 大龄女子"/></a>
           <div class="caption">
-            <h5>{{wares.8.author}} {{wares.8.name}}</h5>
+            <h5>彭佳慧 大龄女子</h5>
             <p> 
             金曲歌后 实至名归. 
             </p>
-             <h4 style="text-align:center"> <a class="btn" href="{% url 'front:ware' wares.8.id %}">查看专辑<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥{{wares.8.price}}</a></h4>
+             <h4 style="text-align:center"> <a class="btn" href="#">加入购物车<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥38.6</a></h4>
           </div>
           </div>
         </li>

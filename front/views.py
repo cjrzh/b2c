@@ -8,7 +8,8 @@ from django.contrib.admin.views.decorators import staff_member_required
 def index(request):
     template_name = 'front/index.html'
     #categories = Category.objects.order_by('id')[:5]
-    wares = Ware.objects.order_by('id')[:5]
+    wares = Ware.objects.order_by('id')[:20]
+    #print(wares.__getitem__(0))
     context={}
     #context['categories']=categories
     context['wares'] = wares
@@ -108,7 +109,7 @@ def show_cart(request):
     context={}
     context['items']=items
     context['num']=num
-    context['price']=price
+    context['price']='%0.2f'%price
     return render(request,'front/show_cart.html',context)
 
 @login_required

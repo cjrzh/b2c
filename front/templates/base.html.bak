@@ -86,17 +86,17 @@
                 </ul>
     <br/>
       <div class="thumbnail">
-         <a href="#"><img src="{% static "front/images/wyt.jpg" %} "alt="五月天 最新专辑"/></a> 
-        <div class="caption">
-          <h5>五月天 第二人生</h5>
-            <h4 style="text-align:center"> <a class="btn" href="#">查看专辑<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥37.7</a></h4>
-        </div>
-        </div><br/>
+      <img src="{% static "front/images/wyt.jpg" %} " alt="五月天 最新专辑"/>
+      <div class="caption">
+        <h5>五月天 第二人生</h5>
+        <h4 style="text-align:center"> <a class="btn" href="#">加入购物车<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥42.6</a></h4>
+      </div>
+      </div><br/>
       <div class="thumbnail">
         <img src="{% static "front/images/sdy.jpg" %} " title="宋冬野 鸽子" alt="宋冬野 鸽子">
         <div class="caption">
           <h5>宋冬野 鸽子</h5>
-            <h4 style="text-align:center"> <a class="btn" href="#">查看专辑<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥28.7</a></h4>
+            <h4 style="text-align:center"> <a class="btn" href="#">加入购物车<i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">￥28.7</a></h4>
         </div>
         </div><br/>
       <div class="thumbnail">
