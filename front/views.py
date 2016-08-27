@@ -214,7 +214,7 @@ def submit_order(request):
 @login_required
 def show_orders(request):
     user = request.user
-    orders=Order.objects.filter(user=user).order_by('date')
+    orders=Order.objects.filter(user=user).order_by('date')[::-1]
     context={}
     context['orders'] = orders
     # for order in orders:
