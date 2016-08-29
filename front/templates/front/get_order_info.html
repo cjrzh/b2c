@@ -39,7 +39,7 @@
                 {% for item in items %}
         <table align="center" width="880" cellspacing="0" cellpadding="0" style="border:1px solid ;">
           <tr>
-            <td width="40px" align="center"><img src="/media/{{ item.ware.picture }}" width="80" height="80"/></td>
+            <td width="40px" align="center"><a href="{% url 'front:ware' item.ware.id %}"><img src="/media/{{ item.ware.picture }}" width="80" height="80"/></a></td>
             <td width="300px">{{ item.ware }}</td>
             <td width="70px"><font color="red">￥{{ item.ware.price }}</font></td>
 
@@ -96,7 +96,7 @@
             <td width="70px"></td>
             <td width="80px"></td>
             <td width="350px">
-
+<a href="{% url 'front:show_cart' %}"class="btn btn-default btn-lg active" role="button" style="float:left"><p style="text-align:center">返回购物车</p></a>
                
                 <a href="{% url 'front:submit_order' %}">
                     <img style="float:right;"src="{% static "front/images/tijiao.png" %}" width="120px"  alt="图片" />

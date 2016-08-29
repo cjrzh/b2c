@@ -24,7 +24,7 @@
    <br>
         <table align="center" width="880" cellspacing="0" cellpadding="0" style="border:1px solid;">
           <tr>
-            <td width="80px" align="center"><img src="/media/{{ item.ware.picture }}" width="80" height="80"/></td>
+            <td width="80px" align="center"><a href="{% url 'front:ware' item.ware.id %}"><img src="/media/{{ item.ware.picture }}" width="80" height="80"/></a></td>
             <td width="300px">{{ item.ware }}</td>
             <td width="130px">{{item.ware.author}}</td>
             <td width="70px"><font color="red">￥{{ item.ware.price }}</font></td>

@@ -30,7 +30,7 @@
          <a href="{% url 'front:ware' ware.id %}"><img src = "/media/{{ ware.picture }}" width="200" height="200" class="img-responsive" alt={{ ware.name }}>
         </a>
         <div class="caption">
-          <p><small>{{ ware.author}}&nbsp;&nbsp;{{ ware.company}}</h4></small></p>
+          <p><small>{{ ware.author}}&nbsp;&nbsp;{{ ware}}</h4></small></p>
          <form action="{% url 'front:add_to_cart' ware.id %}" method="get">
           <big><font color="red">￥{{ ware.price }}</big></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="sumbit"  class="btn btn-default">加入购物车</button>
