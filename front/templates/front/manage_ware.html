@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}{{ category_name }}{% endblock %}
+
+{% block body_block %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'front:manage_category' %}"><big>分类管理</big></a><span class="divider">/</span>
+        </li>
+        <li class="active"><big>{{ category_name }}</big></li>
+    </ul>
+    <h2><a href="/front/category/{{ category.id }}/add_ware/">添加专辑</a></h2>
+    <hr class="soft"/>
+
+    <br class="clr"/>
+
+    {% if category %}
+
+
+        {% if wares %}
+            <div class="tab-content">
+                <div class="tab-pane  active" id="blockView">
+                        {% for ware in wares %}
+
+                                <a href="{% url 'front:ware' ware.id %}">
+                                </a>
+
+                                        <small>{{ ware.author }}&nbsp;&nbsp;{{ ware }}</small>
+                                    <a href="#">编辑</a>
+                                    <a href="#">删除</a>
+                                    <big><font color="red">￥{{ ware.price }}</big></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <br>
+
+                                    <!--<button type="submit" class="btn btn-large btn-primary pull-left">加入购物车<i class=" icon-shopping-cart"></i></button>
+                                </form>-->
+
+
+                        {% endfor %}
+                </div>
+            </div>
+
+        {% else %}
+            <p style="text-align:center;font-size:20px"><big>当前分类没有商品</big></p>
+        {% endif %}
+
+    {% else %}
+        商品分类{{ category_name }}不存在!
+    {% endif %}
+
+
+{% endblock %}
+
+

@@ -2,7 +2,7 @@
 
 {% load staticfiles %}
 
-{% block title %}添加商品{% endblock %}
+{% block title %}添加专辑{% endblock %}
 
 {% block body_block %}
     <h1>添加专辑</h1>
@@ -23,6 +23,7 @@
             {% endfor %}
 
             <input type="submit" name="submit" value="添加商品"/>
+        <a href="{% url 'front:manage_ware' category.id %}">返回</a>
         </form>
     {% else %}
         <p>商品分类不存在!</p>

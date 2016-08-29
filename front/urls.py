@@ -20,4 +20,10 @@ urlpatterns = [
     url(r'^update_userprofile/$', views.update_userprofile, name='update_userprofile'),
     url(r'^submit_order/$', views.submit_order, name='submit_order'),
     url(r'^show_orders/$', views.show_orders, name='show_orders'),
+    url(r'^manage_category/$', views.manage_category, name='manage_category'),
+    url(r'^manage_ware/(?P<category_id>[0-9]+)/$', views.manage_ware, name='manage_ware'),
+    url(r'^manage_orders/$', views.manage_orders, name='manage_orders'),
+    url(r'^manage_user/$', views.manage_user, name='manage_user'),
+
+
 ]

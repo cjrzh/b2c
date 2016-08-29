@@ -220,3 +220,37 @@ def show_orders(request):
     # for order in orders:
     #     print(order.orderitems_set.all())
     return render(request, 'front/show_orders.html',context)
+
+@staff_member_required
+def manage_category(request):
+    context={'cats':Category.objects.all()}
+    return render(request, 'front/manage_category.html', context)
+
+@staff_member_required
+def manage_ware(request,category_id):
+    context={}
+    try:
+        category=Category.objects.get(id=category_id)
+        context['category_name']=category.name
+        wares=Ware.objects.filter(category=category)
+        context['wares']=wares
+        context['category']=category
+
+    except Category.DoesNotExist:
+        print("分类不存在")
+    return render(request,'front/manage_ware.html',context)
+
+@staff_member_required
+def manage_orders(request):
+    orders = Order.objects.all().order_by('date')[::-1]
+    context = {}
+    context['orders'] = orders
+    # for order in orders:
+    #     print(order.orderitems_set.all())
+    return render(request, 'front/manage_orders.html', context)
+
+def manage_user(request):
+    users=User.objects.all()
+    context = {}
+    context['users'] = users
+    return render(request, 'front/manage_user.html', context)

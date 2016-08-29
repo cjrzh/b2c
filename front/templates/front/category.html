@@ -15,10 +15,6 @@
 
     {% if category %}
 
-         {% if user.is_staff %}
-            <br>
-                <a href="/front/category/{{category.id}}/add_ware/">添加商品</a>
-            {% endif %}
 
                {% if wares %}
                <div class="tab-content">

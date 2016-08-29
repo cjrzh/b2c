@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}用户管理{% endblock %}
+
+{% block body_block %}
+<h3>
+    用户管理
+<a href="{% url 'front:administrator' %}">返回</a>
+</h3>
+{% for user in users %}
+    用户id:{{ user.id }}
+    用户名:{{ user.username }}
+    用户email:{{ user.email }}
+    是否为管理员:{{ user.is_staff }}
+    <br>
+    上次登陆时间:{{ user.last_login }}
+    注册时间:{{ user.date_joined }}
+    真实姓名:{{ user.userprofile.realname }}
+    用户地址:{{ user.userprofile.addr }}
+    <br>
+                <a href="#">编辑</a>
+            <a href="#">删除</a>
+    <br>
+    ===========================================
+    <br>
+
+    {% endfor %}
+{% endblock %}

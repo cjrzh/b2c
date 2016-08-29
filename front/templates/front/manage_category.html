@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}分类管理{% endblock %}
+
+{% block body_block %}
+    <h2> <a href="{% url 'front:add_category' %}">添加新分类</a> </h2>
+    {% if cats %}
+        {% for c in cats %}
+            <a href="{% url 'front:manage_ware'  c.id %}">{{ c.name }}</a>
+            <a href="#">编辑</a>
+            <a href="#">删除</a>
+            <br>
+        {% endfor %}
+    {% else %}
+        <li><strong>当前没有分类</strong></li>
+    {% endif %}
+    <h3><a href="{% url 'front:administrator' %}">返回</a> </h3>
+{% endblock %}
