@@ -17,11 +17,32 @@
 
 
         {% if wares %}
-            <div class="tab-content">
-                <div class="tab-pane  active" id="blockView">
+        <table align="center" width="880" height="40" cellspacing="0" cellpadding="0" style="border:1px solid;background:black;">
+            <tr>
+            <td width="180px"><p><font color="#FFFFFF">封面</font></p></td>
+            <td width="180px"><p><font color="#FFFFFF">歌手</font></p></td>
+            <td width="150px"><p><font color="#FFFFFF">名称</font></p></td>
+            <td width="150px"><font color="#FFFFFF">单价</font></td>
+            <td width="70px"><font color="#FFFFFF">编辑</font></td>
+            <td width="70px"><font color="#FFFFFF">删除</font></td>
+          </tr>
+       </table>
+            <!--<div class="tab-content">
+                <div class="tab-pane  active" id="blockView">-->
                         {% for ware in wares %}
+                        <br>
+        <table align="center" width="880" cellspacing="0" cellpadding="0" style="border:1px solid;">
+          <tr>
+            <td width="100px" align="center"><a href="{% url 'front:ware' ware.id %}"><img src="/media/{{ ware.picture }}" width="80" height="80"/></a></td>
+            <td width="100px">{{ ware.author }}</td>
+            <td width="90px">{{ ware }}</td>
+            <td width="90px"><font color="red">￥{{ ware.price }}</td>
+            <td width="40px"><a href="#">编辑</a></td>
+            <td width="40px"><a href="#">删除</a></font></td>
+          </tr>
+       </table>
 
-                                <a href="{% url 'front:ware' ware.id %}">
+                                <!--<a href="{% url 'front:ware' ware.id %}">
                                 </a>
 
                                         <small>{{ ware.author }}&nbsp;&nbsp;{{ ware }}</small>
